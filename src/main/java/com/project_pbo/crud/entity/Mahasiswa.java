@@ -8,7 +8,7 @@ public class Mahasiswa {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer mahasiswaId;
-    private String mahasiswaNIM;
+    private String mahasiswaNim;
     private String mahasiswaName;
     private String mahasiswaContactNumber;
     private String mahasiswaAddress;
@@ -29,11 +29,11 @@ public class Mahasiswa {
     }
 
     public String getMahasiswaNIM() {
-        return mahasiswaNIM;
+        return mahasiswaNim;
     }
 
     public void setMahasiswaNIM(String mahasiswaNIM) {
-        this.mahasiswaNIM = mahasiswaNIM;
+        this.mahasiswaNim = mahasiswaNIM;
     }
 
     public String getMahasiswaName() {
