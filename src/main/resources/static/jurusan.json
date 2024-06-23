@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "fakultas": "Ushuluddin",
+    "jurusan": [
+      { "id": 1, "nama": "Studi Agama-Agama" },
+      { "id": 2, "nama": "Ilmu Alquran dan Tafsir" },
+      { "id": 3, "nama": "Ilmu Hadist" },
+      { "id": 4, "nama": "Tasawuf dan Psikoterapi" },
+      { "id": 5, "nama": "Aqidah dan Filsafat Islam" }
+    ]
+  },
+  {
+    "id": 2,
+    "fakultas": "Tarbiyah dan Keguruan",
+    "jurusan": [
+      { "id": 6, "nama": "Manajemen Pendidikan Islam" },
+      { "id": 7, "nama": "Pendidikan Agama Islam" },
+      { "id": 8, "nama": "Pendidikan Bahasa Arab" },
+      { "id": 9, "nama": "Pendidikan Bahasa Inggris" },
+      { "id": 10, "nama": "Pendidikan Matematika" },
+      { "id": 11, "nama": "Pendidikan Biologi" },
+      { "id": 12, "nama": "Pendidikan Fisika" },
+      { "id": 13, "nama": "Pendidikan Kimia" },
+      { "id": 14, "nama": "Pendidikan Guru MI" },
+      { "id": 15, "nama": "Pendidikan Islam Anak Usia Dini" },
+      { "id": 16, "nama": "Tadris Bahasa Indonesia" }
+    ]
+  },
+  {
+    "id": 3,
+    "fakultas": "Syariah dan Hukum",
+    "jurusan": [
+      { "id": 17, "nama": "Hukum Keluarga (Ahwal Syakhsiyah)" },
+      { "id": 18, "nama": "Hukum Ekonomi Syari'ah (Muamalah)" },
+      { "id": 19, "nama": "Hukum Tata Negara (Siyasah)" },
+      { "id": 20, "nama": "Perbandingan Mazhab dan Hukum" },
+      { "id": 21, "nama": "Ilmu Hukum" },
+      { "id": 22, "nama": "Hukum Pidana Islam" }
+    ]
+  },
+  {
+    "id": 4,
+    "fakultas": "Dakwah dan Komunikasi",
+    "jurusan": [
+      { "id": 23, "nama": "Bimbingan Konseling Islam" },
+      { "id": 24, "nama": "Komunikasi dan Penyiaran Islam" },
+      { "id": 25, "nama": "Manajemen Dakwah" },
+      { "id": 26, "nama": "Pengembangan Masyarakat Islam" },
+      { "id": 27, "nama": "Ilmu Komunikasi Jurnalistik" },
+      { "id": 28, "nama": "Ilmu Komunikasi Humas" },
+      { "id": 29, "nama": "Manajemen Haji dan Umrah" }
+    ]
+  },
+  {
+    "id": 5,
+    "fakultas": "Adab dan Humaniora",
+    "jurusan": [
+      { "id": 30, "nama": "Sejarah Peradaban Islam" },
+      { "id": 31, "nama": "Bahasa dan Sastra Arab" },
+      { "id": 32, "nama": "Sastra Inggris" },
+      { "id": 33, "nama": "Ilmu Perpustakaan dan Informasi Islam" }
+    ]
+  },
+  {
+    "id": 6,
+    "fakultas": "Psikologi",
+    "jurusan": [{ "id": 34, "nama": "Psikologi" }]
+  },
+  {
+    "id": 7,
+    "fakultas": "Sains dan Teknologi",
+    "jurusan": [
+      { "id": 35, "nama": "Matematika" },
+      { "id": 36, "nama": "Biologi" },
+      { "id": 37, "nama": "Fisika" },
+      { "id": 38, "nama": "Kimia" },
+      { "id": 39, "nama": "Teknik Informatika" },
+      { "id": 40, "nama": "Agroteknologi" },
+      { "id": 41, "nama": "Teknik Elektro" }
+    ]
+  },
+  {
+    "id": 8,
+    "fakultas": "Ilmu Sosial dan Ilmu Politik",
+    "jurusan": [
+      { "id": 42, "nama": "Administrasi Publik" },
+      { "id": 43, "nama": "Sosiologi" },
+      { "id": 44, "nama": "Ilmu Politik" }
+    ]
+  },
+  {
+    "id": 9,
+    "fakultas": "Ekonomi dan Bisnis Islam",
+    "jurusan": [
+      { "id": 45, "nama": "Akuntansi Syari'ah" },
+      { "id": 46, "nama": "Ekonomi Syari'ah" },
+      { "id": 47, "nama": "Manajemen Keuangan Syari'ah" },
+      { "id": 48, "nama": "Manajemen" }
+    ]
+  }
+]

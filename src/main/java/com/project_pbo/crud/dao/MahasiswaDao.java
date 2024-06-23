@@ -1,6 +1,6 @@
 package com.project_pbo.crud.dao;
 
-import com.project_pbo.crud.entity.Mahasiswa;
+import com.project_pbo.crud.model.Mahasiswa;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

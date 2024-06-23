@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Manajemen Mahasiswa</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <h2 class="mt-5">Manajemen Mahasiswa</h2>
+    <div>
+        <button class="btn btn-primary mb-3" data-toggle="modal" data-target="#addMahasiswaModal">Tambah Mahasiswa</button>
+    </div>
+    <table id="mahasiswaTable" class="display" style="width:100%">
+        <thead>
+        <tr>
+            <th>No</th>
+            <th>NIM</th>
+            <th>Nama</th>
+            <th>Kontak</th>
+            <th>Alamat</th>
+            <th>Jenis Kelamin</th>
+            <th>Fakultas</th>
+            <th>Jurusan</th>
+            <th>Aksi</th>
+        </tr>
+        </thead>
+    </table>
+</div>
+
+<!-- Modal Tambah Mahasiswa -->
+<div class="modal" id="addMahasiswaModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Tambah Mahasiswa</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="mahasiswaForm">
+                    <div class="form-group">
+                        <label for="mahasiswaNim">NIM:</label>
+                        <input type="text" class="form-control" id="mahasiswaNim" name="mahasiswaNim" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="mahasiswaName">Nama:</label>
+                        <input type="text" class="form-control" id="mahasiswaName" name="mahasiswaName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="mahasiswaContactNumber">Kontak:</label>
+                        <input type="text" class="form-control" id="mahasiswaContactNumber" name="mahasiswaContactNumber" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="mahasiswaAddress">Alamat:</label>
+                        <input type="text" class="form-control" id="mahasiswaAddress" name="mahasiswaAddress" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="mahasiswaGender">Jenis Kelamin:</label>
+                        <select class="form-control" id="mahasiswaGender" name="mahasiswaGender" required>
+                            <option value="Laki-laki">Laki-laki</option>
+                            <option value="Perempuan">Perempuan</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="mahasiswaFaculty">Fakultas:</label>
+                        <select class="form-control" id="mahasiswaFaculty" name="mahasiswaFaculty" required>
+                            <!-- Fakultas options akan diisi di sini -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="mahasiswaMajor">Jurusan:</label>
+                        <select class="form-control" id="mahasiswaMajor" name="mahasiswaMajor" required>
+                            <!-- Jurusan options akan diisi di sini -->
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Edit Mahasiswa -->
+<div class="modal" id="editMahasiswaModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Edit Mahasiswa</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="editMahasiswaForm">
+                    <input type="hidden" id="editMahasiswaId" name="mahasiswaId">
+                    <div class="form-group">
+                        <label for="editMahasiswaNim">NIM:</label>
+                        <input type="text" class="form-control" id="editMahasiswaNim" name="mahasiswaNim" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editMahasiswaName">Nama:</label>
+                        <input type="text" class="form-control" id="editMahasiswaName" name="mahasiswaName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editMahasiswaContactNumber">Kontak:</label>
+                        <input type="text" class="form-control" id="editMahasiswaContactNumber" name="mahasiswaContactNumber" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editMahasiswaAddress">Alamat:</label>
+                        <input type="text" class="form-control" id="editMahasiswaAddress" name="mahasiswaAddress" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editMahasiswaGender">Jenis Kelamin:</label>
+                        <select class="form-control" id="editMahasiswaGender" name="mahasiswaGender" required>
+                            <option value="Laki-laki">Laki-laki</option>
+                            <option value="Perempuan">Perempuan</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="editMahasiswaFaculty">Fakultas:</label>
+                        <select class="form-control" id="editMahasiswaFaculty" name="mahasiswaFaculty" required>
+                            <!-- Fakultas options akan diisi di sini -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="editMahasiswaMajor">Jurusan:</label>
+                        <select class="form-control" id="editMahasiswaMajor" name="mahasiswaMajor" required>
+                            <!-- Jurusan options akan diisi di sini -->
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let fakultasJurusan = [];
+
+    // Fetching fakultas and jurusan from jurusan.json
+    $.getJSON('/jurusan.json', function(data) {
+        fakultasJurusan = data;
+        let fakultasOptions = '<option value="">Pilih Fakultas</option>';
+        data.forEach(function(fakultas) {
+            fakultasOptions += `<option value="${fakultas.fakultas}">${fakultas.fakultas}</option>`;
+        });
+        $('#mahasiswaFaculty').html(fakultasOptions);
+        $('#editMahasiswaFaculty').html(fakultasOptions);
+    }).fail(function() {
+        alert('Failed to load jurusan.json');
+    });
+
+    // Populate jurusan options based on selected fakultas
+    $('#mahasiswaFaculty, #editMahasiswaFaculty').on('change', function() {
+        let selectedFaculty = $(this).val();
+        let jurusanOptions = '<option value="">Pilih Jurusan</option>';
+        let selectedJurusan = fakultasJurusan.find(fakultas => fakultas.fakultas === selectedFaculty);
+        if (selectedJurusan) {
+            selectedJurusan.jurusan.forEach(function(jurusan) {
+                jurusanOptions += `<option value="${jurusan.nama}">${jurusan.nama}</option>`;
+            });
+        }
+        if ($(this).attr('id') === 'mahasiswaFaculty') {
+            $('#mahasiswaMajor').html(jurusanOptions);
+        } else {
+            $('#editMahasiswaMajor').html(jurusanOptions);
+        }
+    });
+
+    // Fetch Mahasiswa data and populate the table
+    function fetchMahasiswa() {
+        $.ajax({
+            url: '/get/mahasiswa',
+            method: 'GET',
+            success: function(data) {
+                $('#mahasiswaTable').DataTable({
+                    data: data,
+                    columns: [
+                        {
+                            data: null,
+                            render: function (data, type, row, meta) {
+                                return meta.row + 1;
+                            }
+                        },
+                        { data: 'mahasiswaNIM' },
+                        { data: 'mahasiswaName' },
+                        { data: 'mahasiswaContactNumber' },
+                        { data: 'mahasiswaAddress' },
+                        { data: 'mahasiswaGender' },
+                        { data: 'mahasiswaFaculty' },
+                        { data: 'mahasiswaMajor' },
+                        {
+                            data: null,
+                            render: function(data, type, row) {
+                                return `
+                                    <button class="btn btn-info btn-sm" onclick="editMahasiswa(${row.mahasiswaId})">Edit</button>
+                                    <button class="btn btn-danger btn-sm" onclick="deleteMahasiswa(${row.mahasiswaId})">Hapus</button>
+                                `;
+                            }
+                        }
+                    ],
+                    // Disable ordering on the first column (No)
+                    columnDefs: [
+                        { "orderable": false, "targets": 0 }
+                    ],
+                     // Row callback to update row number
+                    rowCallback: function(row, data, index) {
+                        // Get current page info
+                        var info = this.api().page.info();
+                        // Calculate row index based on page and page length
+                        var pageStart = info.start;
+                        var pageLength = info.length;
+                        var currentIndex = pageStart + index + 1;
+                        // Update the first column in the current row
+                        $('td:eq(0)', row).html(currentIndex);
+                    },
+                    destroy: true
+                });
+            },
+            error: function() {
+                alert('Failed to fetch mahasiswa data');
+            }
+        });
+    }
+
+    // Save Mahasiswa
+    $('#mahasiswaForm').on('submit', function(event) {
+        event.preventDefault();
+        let mahasiswaData = {
+            mahasiswaNIM: $('#mahasiswaNim').val(),
+            mahasiswaName: $('#mahasiswaName').val(),
+            mahasiswaContactNumber: $('#mahasiswaContactNumber').val(),
+            mahasiswaAddress: $('#mahasiswaAddress').val(),
+            mahasiswaGender: $('#mahasiswaGender').val(),
+            mahasiswaFaculty: $('#mahasiswaFaculty').val(),
+            mahasiswaMajor: $('#mahasiswaMajor').val()
+        };
+
+        $.ajax({
+            url: '/post/mahasiswa',
+            method: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(mahasiswaData),
+            success: function() {
+                $('#addMahasiswaModal').modal('hide');
+                fetchMahasiswa();
+            },
+            error: function() {
+                alert('Failed to save mahasiswa data');
+            }
+        });
+    });
+
+
+    // Edit Mahasiswa
+    function editMahasiswa(mahasiswaId) {
+        $.ajax({
+            url: `/get/mahasiswa/${mahasiswaId}`,
+            method: 'GET',
+            success: function(mahasiswa) {
+                $('#editMahasiswaId').val(mahasiswa.mahasiswaId);
+                $('#editMahasiswaNim').val(mahasiswa.mahasiswaNIM);
+                $('#editMahasiswaName').val(mahasiswa.mahasiswaName);
+                $('#editMahasiswaContactNumber').val(mahasiswa.mahasiswaContactNumber);
+                $('#editMahasiswaAddress').val(mahasiswa.mahasiswaAddress);
+                $('#editMahasiswaGender').val(mahasiswa.mahasiswaGender);
+                $('#editMahasiswaFaculty').val(mahasiswa.mahasiswaFaculty).change();
+                setTimeout(function() {
+                    $('#editMahasiswaMajor').val(mahasiswa.mahasiswaMajor);
+                }, 100);
+                $('#editMahasiswaModal').modal('show');
+            },
+            error: function() {
+                alert('Failed to fetch mahasiswa data');
+            }
+        });
+    }
+
+    // Update Mahasiswa
+    $('#editMahasiswaForm').on('submit', function(event) {
+        event.preventDefault();
+        let mahasiswaData = {
+            mahasiswaId: $('#editMahasiswaId').val(),
+            mahasiswaNIM: $('#editMahasiswaNim').val(),
+            mahasiswaName: $('#editMahasiswaName').val(),
+            mahasiswaContactNumber: $('#editMahasiswaContactNumber').val(),
+            mahasiswaAddress: $('#editMahasiswaAddress').val(),
+            mahasiswaGender: $('#editMahasiswaGender').val(),
+            mahasiswaFaculty: $('#editMahasiswaFaculty').val(),
+            mahasiswaMajor: $('#editMahasiswaMajor').val()
+        };
+
+        $.ajax({
+            url: '/update/mahasiswa',
+            method: 'PUT',
+            contentType: 'application/json',
+            data: JSON.stringify(mahasiswaData),
+            success: function() {
+                $('#editMahasiswaModal').modal('hide');
+                fetchMahasiswa();
+            },
+            error: function() {
+                alert('Failed to update mahasiswa data');
+            }
+        });
+    });
+
+
+    // Delete Mahasiswa
+    function deleteMahasiswa(mahasiswaId) {
+        if (confirm('Apakah Anda yakin ingin menghapus mahasiswa ini?')) {
+            $.ajax({
+                url: `/delete/mahasiswa/${mahasiswaId}`,
+                method: 'DELETE',
+                success: function() {
+                    fetchMahasiswa();
+                },
+                error: function() {
+                    alert('Failed to delete mahasiswa data');
+                }
+            });
+        }
+    }
+
+    // Fetch mahasiswa data on page load
+    fetchMahasiswa();
+</script>
+</body>
+</html>
