@@ -1,4 +1,4 @@
-package com.project_pbo.crud.entity;
+package com.project_pbo.crud.model;
 
 import jakarta.persistence.*;
 
